@@ -18,7 +18,7 @@ export const HighScoresStyle = StyleSheet.create({
     scoresTextInfo: {
         fontSize: 22,
         marginVertical: deviceHeight * 0.01,
-textAlign: 'center',
-flex:1
+        textAlign: 'center',
+        flex: 1
     },
 });
