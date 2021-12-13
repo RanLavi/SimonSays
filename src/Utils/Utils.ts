@@ -43,9 +43,11 @@ export const checkGameState = (gameState: IGameState, gameOver: boolean) => {
     if (gameOver) {
         return { ...gameState, running: RUNNING.NO }
     }
-    return gameState.userPick !== gameState.colorsArray.length - 1 ?
-        { ...gameState, userPick: gameState.userPick + 1 } :
-        { ...gameState, displayNext: true, score: gameState.score + 1, userPick: 0 }
+    const middleOfPlayersTurn = gameState.userPick !== gameState.colorsArray.length - 1;
+    if (middleOfPlayersTurn) {
+        return { ...gameState, userPick: gameState.userPick + 1 }
+    }
+    return { ...gameState, displayNext: true, score: gameState.score + 1, userPick: 0 }
 }
 
 export const checkScore = async (score: number) => {
@@ -54,5 +56,5 @@ export const checkScore = async (score: number) => {
     if (score > lowestScore) {
         return highScores
     }
-    return undefined;
+    return;
 }
