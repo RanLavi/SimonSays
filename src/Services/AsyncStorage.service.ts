@@ -11,7 +11,7 @@ export const getHighScores = async () => {
     }
   }
 
-  export const setHighScores = async (value: IHighScore) => {
+  export const setHighScores = async (value: IHighScore[]) => {
     try {
       const jsonValue = JSON.stringify(value)
       await AsyncStorage.setItem(HIGH_SCORES, jsonValue)

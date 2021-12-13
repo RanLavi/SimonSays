@@ -7,10 +7,11 @@ import {
 import { LayoutStyle as layoutStyles } from '../../Layout/Layout.style';
 import { getHighScores } from '../../Services/AsyncStorage.service';
 import CustomHeader from '../../Shared/CustomHeader/CustomHeader';
+import { IHighScore } from './HighScoreInterface';
 import { HighScoresStyle as styles } from './HighScores.style';
 
 const HighScores = ({ navigation }) => {
-    const [highScores, setHighScores] = useState(undefined);
+    const [highScores, setHighScores] = useState<IHighScore[]>([]);
 
     useEffect(() => {
         const getScores = async () => {

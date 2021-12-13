@@ -8,12 +8,13 @@ import { GameScreenStyle as styles } from './GameScreen.style';
 import { LayoutStyle as layoutStyles } from '../../Layout/Layout.style';
 import { IGameState, RUNNING } from './GameStateInterface';
 import CustomHeader from '../../Shared/CustomHeader/CustomHeader';
+import { IHighScore } from '../HighScores/HighScoreInterface';
 
 const GameScreen = ({ navigation }) => {
     const [gameState, setGameState] = useState<IGameState>(initialGameState);
     const [displayColor, setDisplayColor] = useState<string>('');
     const [showNewScorePopup, setShowNewScorePopup] = useState<boolean>(false);
-    const [highScores, setHighScores] = useState();
+    const [highScores, setHighScores] = useState<IHighScore[]>([]);
 
     useEffect(() => { /* Choose new color to display */
         if (gameState.displayNext) {
