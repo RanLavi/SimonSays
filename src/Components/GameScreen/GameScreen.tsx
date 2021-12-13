@@ -13,7 +13,7 @@ const GameScreen = ({ navigation }) => {
     const [gameState, setGameState] = useState<IGameState>(initialGameState);
     const [displayColor, setDisplayColor] = useState<string>('');
     const [showNewScorePopup, setShowNewScorePopup] = useState<boolean>(false);
-    const [highScores, setHighScores] = useState(undefined);
+    const [highScores, setHighScores] = useState();
 
     useEffect(() => { /* Choose new color to display */
         if (gameState.displayNext) {
@@ -76,7 +76,7 @@ const GameScreen = ({ navigation }) => {
                 <View style={styles.ColoredButtonsWrapper}>
                     {colorList.map((color, index) => <ColoredButtons color={color} key={index} index={index}
                         display={color === displayColor} onPress={() =>
-                            !gameState.displayNext && gameState.running && displayColor === '' && displayColorFunc(color)} />)}
+                            !gameState.displayNext && gameState.running === RUNNING.YES && displayColor === '' && displayColorFunc(color)} />)}
                 </View>
                 <View style={styles.boardMiddleContainer}>
                     {gameState.running !== RUNNING.YES ? <TouchableOpacity onPress={() => startGame()}>
